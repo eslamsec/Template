@@ -1,10 +1,3 @@
-{{-- <div class="form-group">
-    <label>{{ translate('Region Code') }}</label>
-    <input type="text" class="form-control" name="code">
-     <label>{{ translate('Region Name') }}</label>
-    <input type="text" class="form-control" name="name">
-</div> --}}
-
 
 
 <div class="">
@@ -398,49 +391,47 @@
 							<label class="form-check-label" for="inlineCheckbox2">Yes</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input foc" type="radio" name="reg_tax_status" id="reg_tax_status" value="0" >
+							<input class="form-check-input foc" type="radio" checked name="reg_tax_status" id="reg_tax_status" value="0" >
 							<label class="form-check-label" for="inlineCheckbox3">No</label>
 						</div>
 					</div>
 
-					<div class=" mb-3  e-inv-div taxinfo ">
+					<div class=" mb-3  e-inv-div taxinfo d-none">
 						<label for="validationCustom01">Enable E-invoice</label><br>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" <?php //if (strtolower($_SESSION['TALLY_ADMIN_PROFILE']['username']) != 'finexadmin') echo 'disabled' 
-															?> type="radio" name="e_invoice" id="e_invoice	" value="1"  >
+							<input class="form-check-input"   type="radio" name="e_invoice" id="e_invoice	" value="1"  >
 							<label class="form-check-label" for="inlineCheckbox2">Yes</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" <?php //if (strtolower($_SESSION['TALLY_ADMIN_PROFILE']['username']) != 'finexadmin') echo 'disabled' 
-															?> type="radio" name="e_invoice" id="e_invoice" value="0" >
+							<input class="form-check-input"  checked type="radio" name="e_invoice" id="e_invoice" value="0" >
 							<label class="form-check-label" for="inlineCheckbox3">No</label>
 						</div>
 					</div>
-					<div class=" mb-3 taxinfo ">
+					<div class=" mb-3 taxinfo d-none">
 						<label for="validationCustom01">VAT No.</label>
 						<input type="text" name="vat_no" id="vat_no" class="form-control form-control-sm"  required>
 					</div>
 
-					<div class=" mb-3 taxinfo ">
+					<div class=" mb-3 taxinfo d-none">
 						<label for="validationCustom01">Group VAT No.</label>
 						<input type="text" name="group_vat_no" id="group_vat_no" class="form-control form-control-sm" required>
 					</div>
 
-					<div class="mb-3 taxinfo ">
+					<div class="mb-3 taxinfo d-none ">
 						<label for="validationCustom01">Tax Registration Date</label>
 						<input type="text" data-attr="date" name="tax_reg_date" id="tax_reg_date" class="form-control form-control-sm"  required>
 					</div>
 
-					<div class="mb-3 taxinfo2  "> 
+					<div class="mb-3 taxinfo2 d-none "> 
 						<label for="validationCustom01">Organization Unit Name</label>
 						<input type="text" data-attr="organization_unit_name" name="organization_unit_name" id="organization_unit_name" class="form-control form-control-sm" required>
 					</div>
 
-					<div class="mb-3 taxinfo2  ">
+					<div class="mb-3 taxinfo2  d-none">
 						<label for="validationCustom01">Commercial Registration Number</label>
 						<input type="text" data-attr="commercial_registration_number" name="commercial_registration_number" id="commercial_registration_number" class="form-control form-control-sm" >
 					</div> 
-					<div class="mb-3 taxinfo2  ">
+					<div class="mb-3 taxinfo2 d-none ">
 						<label for="validationCustom01">Invoice Type</label>
 						<select name="invoice_type" id="invoice_type" class="form-control form-control-sm">
 							<option value="1100" disabled>Select Your Invoice Type</option>
@@ -449,7 +440,7 @@
 							<option value="1100">Both</option>
 						</select>
 					</div>
-					<div class="mb-3 taxinfo2 ">
+					<div class="mb-3 taxinfo2 d-none">
 						<label for="validationCustom01">Environment</label>
 						<select name="env_type" id="env_type" class="form-control form-control-sm">
 							<option value="developer-portal" disabled>Select Your Environment</option>
@@ -458,17 +449,17 @@
 							<option value="core">Core</option>
 						</select>
 					</div>
-					<div class="mb-3 taxinfo2  ">
+					<div class="mb-3 taxinfo2  d-none">
 						<label for="validationCustom01">Registered Address</label>
 						<input type="text" data-attr="registered_address" name="registered_address" id="registered_address" class="form-control form-control-sm"   required>
 					</div>
 
-					<div class="mb-3 taxinfo2  ">
+					<div class="mb-3 taxinfo2  d-none">
 						<label for="validationCustom01">Auth Otp</label>
 						<input type="text" data-attr="auth_otp" name="auth_otp" id="auth_otp" class="form-control form-control-sm"   required>
 					</div>
 
-					<div class="mb-3 taxinfo2 ">
+					<div class="mb-3 taxinfo2 d-none">
 						<label for="validationCustom01">Company Category</label>
 						<input type="text" data-attr="company_category" name="company_category" id="company_category" class="form-control form-control-sm" required>
 					</div>
@@ -527,3 +518,85 @@
 	</div>
 
 </div>
+
+<script>
+$(document).ready(function () {
+
+    $('input[name="reg_tax_status"]').on('change', function () {
+
+        if ($(this).val() == "1") {
+            $('.taxinfo').removeClass('d-none');
+        } else {
+            $('.taxinfo').addClass('d-none');
+        }
+
+    });
+    $('input[name="e_invoice"]').on('change', function () {
+
+        if ($(this).val() == "1") {
+            $('.taxinfo2').removeClass('d-none');
+        } else {
+            $('.taxinfo2').addClass('d-none');
+        }
+
+    });
+
+});
+
+function erp_new_tax(obj){
+	var open = $(obj).attr('data-open');
+	if(open == 0){
+		$('#newTax').show();
+		$(obj).html("Cancel");
+		$(obj).attr('data-open',1);
+		$('#validity_from').focus();
+		$('#new_tax').val(1);
+	}else{
+		$('#newTax').hide();
+		$(obj).html("New Tax System");
+		$(obj).attr('data-open',0);
+		$('#new_tax').val(0);
+	}
+	return;
+}
+var curr_dial_code = '';
+function get_current_country(obj){
+	curr_dial_code = $(obj).find('option:selected').attr('data-dial-code');
+	return;
+}
+
+function set_country(obj){
+	var countrycode = $(obj).find('option:selected').attr('data-ccode');
+	var region = $(obj).find('option:selected').attr('data-region');
+	var currency = $(obj).find('option:selected').attr('data-currency');
+	var currencyCode = $(obj).find('option:selected').attr('data-currencyCode');
+	var symbol = $(obj).find('option:selected').attr('data-symbol');
+	var denomination = $(obj).find('option:selected').attr('data-denomination');
+	var decimal = $(obj).find('option:selected').attr('data-decimal');
+	var dial_code = $(obj).find('option:selected').attr('data-dial-code');
+	
+	$('#countrycode').val(countrycode);
+	$('#region').val(region);
+	$('#currency').val(currency);
+	$('#symbol').val(symbol);
+	$('#currencyCode').val(currencyCode);
+	$('#denomination').val(denomination);
+	$('#decimals').val(decimal);
+
+	var mobile = $('#mobile').val();
+		mobile = (mobile == '') ? dial_code : mobile.replace(curr_dial_code, dial_code);
+	$('#mobile').val(mobile);
+
+	var phone = $('#phone').val();
+		phone = (phone == '') ? dial_code : phone.replace(curr_dial_code, dial_code);
+	$('#phone').val(phone);
+	$(obj).blur();
+}
+function erp_view_all_tax(obj){
+	var body = $('#tax_table').html();
+	body = body.replaceAll('hide_tax','');
+	erp_open_moal(body);
+	$('#innerModalLabel').html("Tax Systms");
+	$('.modal-footer').hide();
+}
+</script>
