@@ -1,0 +1,27 @@
+.dis-none { display:none; }
+
+.pdf-container { border:0px solid #999; padding:4px; }
+
+.pdf-section { border:1px solid #999; padding:4px; }
+.pdf-body-1 { border-bottom:0; }
+.pdf-body-2 { border-top:0; }
+
+.pdf-section p { display:block; margin:0; }
+.pdf-section img { max-width:100%; }
+.pdf-section table { width:100%; }
+.pdf-section > table > tbody > tr > td { border:1px dashed #999; position:relative; padding:12px 4px; }
+
+.item-table { width:100%; border-left:1px solid #999; border-right:1px solid #999; padding:4px; }
+.item-table table { width:100%; border:1px solid #999; }
+.item-table table th { border:1px solid #999; padding:4px; background:#c6eaff; }
+.item-table table td { border:1px solid #999; padding:4px; }
+
+.action-btn-wrapper { position:absolute; top:0; right:0; }
+.action-btn-wrapper .dropdown-item i { display:inline-block; width:16px; text-align:center; }
+.action-btn { color:#1d1c1c; padding:5px 8px; font-size:10px; background:#e7e7e7; border:1px solid #555; }
+
+.content-type-wrapper.text p { padding:4px; border:1px dashed #999; }
+.content-type-wrapper.field table { width:100%; }
+.content-type-wrapper.field table td { padding:4px; border:1px dashed #999; }
+.placeholders li { cursor:pointer; }
+.placeholders li:hover { color:#64b0f2; }
